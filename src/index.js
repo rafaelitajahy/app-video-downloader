@@ -1,26 +1,25 @@
-/**
- * Reencode audio & video without creating files first
- *
- * Requirements: ffmpeg, ether via a manual installation or via ffmpeg-static
- *
- * If you need more complex features like an output-stream you can check the older, more complex example:
- * https://github.com/fent/node-ytdl-core/blob/cc6720f9387088d6253acc71c8a49000544d4d2a/example/ffmpeg.js
- */
-
-// Buildin with nodejs
 const cp = require('child_process');
 const readline = require('readline');
-// External modules
-const ytdl = require('../');
+const ytdl = require('ytdl-core');
 const ffmpeg = require('ffmpeg-static');
-// Global constants
-const ref = 'https://www.youtube.com/watch?v=aqz-KE-bpKQ';
+
+const dadosVideo = {
+  id: 'RW_4KDIVZ8Q',
+  title: '',
+}
+
+const ref = 'https://www.youtube.com/watch?v=RW_4KDIVZ8Q';
 const tracker = {
   start: Date.now(),
   audio: { downloaded: 0, total: Infinity },
   video: { downloaded: 0, total: Infinity },
   merged: { frame: 0, speed: '0x', fps: 0 },
 };
+
+ytdl.getInfo(dadosVideo.id).then(info => {
+  dadosVideo.title = info.videoDetails.title;  
+});
+
 
 // Get audio and video streams
 const audio = ytdl(ref, { quality: 'highestaudio' })
