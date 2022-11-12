@@ -3,7 +3,12 @@ const readline = require('readline');
 const ytdl = require('ytdl-core');
 const ffmpeg = require('ffmpeg-static');
 
-const ref = 'https://www.youtube.com/watch?v=4_kqB23VGWU';
+
+function limit(string = '', limit = 0) {
+  return string.substring(0, limit);
+}
+
+const ref = 'https://www.youtube.com/watch?v=RW_4KDIVZ8Q';
 
 const tracker = {
   start: Date.now(),
