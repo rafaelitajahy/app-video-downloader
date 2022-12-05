@@ -12,7 +12,7 @@ const dadosVideo = {
   title: '',
 };
 
-const ref = 'https://www.youtube.com/watch?v=RW_4KDIVZ8Q';
+const ref = 'https://www.youtube.com/watch?v=8bWtd6tkY9I';
 
 ytdl.getInfo(dadosVideo.id).then((info) => {
   dadosVideo.title = limit(info.videoDetails.title, 100);
