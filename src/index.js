@@ -7,7 +7,9 @@ function limit(string = '', limit = 0) {
   return string.substring(0, limit);
 }
 
-const ref = 'https://www.youtube.com/watch?v=RW_4KDIVZ8Q';
+const arguments = process.argv;
+
+const ref = arguments[2];
 
 const tracker = {
   start: Date.now(),
@@ -24,6 +26,7 @@ ytdl
     return info.videoDetails;
   })
   .then((details) => {
+    console.log('START: ', details.title);
     // Get audio and video streams
     const audio = ytdl(ref, { quality: 'highestaudio' }).on(
       'progress',
